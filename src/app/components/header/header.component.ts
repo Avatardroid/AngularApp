@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -10,6 +11,13 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class HeaderComponent {
 
-  constructor( public cartService: CartService) { }
+  cartItemCount: number = 0;
 
+  constructor(public cartService: CartService) { }
+
+  ngOnInit(): void {
+    this.cartService.getCartItemsCount().subscribe(count => {
+      this.cartItemCount = count;
+    });
+  }
 }
