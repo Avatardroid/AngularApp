@@ -11,13 +11,6 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class HeaderComponent {
 
-  cartItemCount: number = 0;
-
   constructor(public cartService: CartService) { }
 
-  ngOnInit(): void {
-    this.cartService.getCartItemsCount().subscribe(count => {
-      this.cartItemCount = count;
-    });
-  }
 }

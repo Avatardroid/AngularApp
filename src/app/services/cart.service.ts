@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable, pipe } from 'rxjs';
 import { ICartItem } from '../models/cart-item';
 import { IProduct } from '../models/products';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private cartItems: ICartItem[] = [];
+  private cartItemCount$ = new BehaviorSubject(0);
 
   constructor() { }
-
-  cartItems: ICartItem[] = [];
-  private cartItemCount = new BehaviorSubject(0);
 
   addToCart(product: IProduct) {
     let cartItem: ICartItem = {
@@ -25,7 +25,6 @@ export class CartService {
     else {
       this.cartItems.push(cartItem);
     }
-    this.cartItemCount.next(this.cartItemCount.value + 1)
   }
 
   getItems() {
@@ -40,8 +39,16 @@ export class CartService {
     return total;
   }
 
-  getCartItemsCount(): BehaviorSubject<number>{
-      return this.cartItemCount;
+  getCartItemsCount() {
+    console.log("saaS");
+    return this.cartItemCount$.pipe(
+      map(() => {
+        let totalCount = 0;
+        this.cartItems.forEach(x => totalCount += x.count);
+        return totalCount;
+      })
+    );
+
   }
 
 }
