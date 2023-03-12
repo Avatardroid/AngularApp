@@ -40,8 +40,8 @@ export class CartService {
     return total;
   }
 
-  getCartItemsCount(): BehaviorSubject<number>{
-      return this.cartItemCount;
+  getCartItemsCount() {
+      return this.cartItemCount.asObservable();
   }
 
 }

@@ -3,6 +3,6 @@
     <button class="btn" type="button" routerLink="">Home</button>
     <button class="btn" type="button" routerLink="cart">Shopping cart</button>
   </form>
-  <div routerLink="cart">Items in cart - {{ cartItemCount }}</div>
+  <div>Items in cart - {{ cartItemCount$ | async }}</div>
 </nav>
 
