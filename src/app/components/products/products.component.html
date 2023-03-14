@@ -1,0 +1,12 @@
+<div class="container-fluid" style="width: 70%;">
+  <ul class="list-group">
+    <div class="row">
+      <div class="col-8">Title</div>
+      <div class="col-2">Price</div>
+    </div>
+
+    <li *ngFor="let product of products" class="list-group-item">
+        <app-product-line [product]="product" (addToCart)="addToCart($event)"></app-product-line>
+    </li>
+  </ul>
+</div>

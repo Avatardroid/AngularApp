@@ -1,0 +1,13 @@
+<div class="container-fluid" style="width: 70%;">
+  <app-cart-total></app-cart-total>
+  <ul class="list-group">
+    <div class="row">
+      <div class="col-8">Title</div>
+      <div class="col-2 text-center">Quantity</div>
+      <div class="col-2 text-end">Price</div>
+    </div>
+    <li *ngFor="let item of cartItems" class="list-group-item">
+      <app-cart-line [cartItem]="item"></app-cart-line>
+    </li>
+  </ul>
+</div>
