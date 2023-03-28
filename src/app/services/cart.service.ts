@@ -3,7 +3,7 @@ import { BehaviorSubject, map, Observable, pipe } from 'rxjs';
 import { ICartItem } from '../models/cart-item';
 import { IProduct } from '../models/products';
 import { Store } from '@ngrx/store';
-import { addToCart } from '../actions/cart.actions';
+import { addToCart, removeFromCart } from '../actions/cart.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,10 @@ export class CartService {
       count: 1,
     }
     this.store.dispatch(addToCart(cartItem));
+  }
+
+  removeFromCart(cartItem: ICartItem): void {
+    this.store.dispatch(removeFromCart(cartItem));
   }
 
   // addToCart(product: IProduct) {

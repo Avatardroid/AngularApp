@@ -2,12 +2,12 @@
   <app-cart-total></app-cart-total>
   <ul class="list-group">
     <div class="row">
-      <div class="col-8">Title</div>
+      <div class="col-7">Title</div>
       <div class="col-2 text-center">Quantity</div>
-      <div class="col-2 text-end">Price</div>
+      <div class="col-2 text-center">Price</div>
     </div>
     <li *ngFor="let item of items$ | async" class="list-group-item">
-      <app-cart-line [cartItem]="item"></app-cart-line>
+      <app-cart-line [cartItem]="item" (removeFromCart)="removeFromCart($event)"></app-cart-line>
     </li>
   </ul>
 </div>
